@@ -17,9 +17,9 @@ class ModelRunner():
         self.args = args
         self.data_gen = data_gen
         self.model = model
-        self.best_rmses = []
-        self.best_rses = []
-        self.best_maes = []
+        self.best_rmse = None
+        self.best_rse = None
+        self.best_mae = None
         self.running_times = []
         self.train_losses = []
 
@@ -235,9 +235,9 @@ class ModelRunner():
         final_best_rse = (best_valid_rse + best_test_rse) / 2.0
         final_best_mae = (best_valid_mae + best_test_mae) / 2.0
 
-        self.best_rmses.append(np.sqrt(final_best_mse))
-        self.best_rses.append(final_best_rse)
-        self.best_maes.append(final_best_mae)
+        self.best_rmse = np.sqrt(final_best_mse)
+        self.best_rse = final_best_rse
+        self.best_mae = final_best_mae
 
     # ---------------------------------------------------------------------------------------------------------------------------------------------
     """
@@ -251,19 +251,12 @@ class ModelRunner():
         for k in self.args.__dict__.keys():
             print(k, ': ', self.args.__dict__[k])
 
-        #running_times = np.array(self.running_times)
+        running_times = np.array(self.running_times)
         #train_losses = np.array(self.train_losses)
 
-        best_rmses = np.array(self.best_rmses)
-        best_rses = np.array(self.best_rses)
-        best_maes = np.array(self.best_maes)
-
-        print("loss trend: ", self.train_losses)
-        #print("ground truth: ", self.ground_truth.tolist())
-        #print("prediction: ", self.predict.tolist())
-
-        #print("time: mean {:8.7f} | std {:8.7f}".format(np.mean(running_times), np.std(running_times)))
-        print("rmse: mean {:8.7f} | std {:8.7f} | min {:8.7f}".format(np.mean(best_rmses), np.std(best_rmses), np.min(best_rmses)))
-        print(" rse: mean {:8.7f} | std {:8.7f} | min {:8.7f}".format(np.mean(best_rses), np.std(best_rses), np.min(best_rses)))
-        print(" mae: mean {:8.7f} | std {:8.7f} | min {:8.7f}".format(np.mean(best_maes), np.std(best_maes), np.min(best_maes)))
+        print("time: sum {:8.7f} | mean {:8.7f}".format(np.sum(running_times), np.mean(running_times)))
+        #print("loss trend: ", self.train_losses)
+        print("rmse: {:8.7f}".format(self.best_rmse))
+        print("rse: {:8.7f}".format(self.best_rse))
+        print("mae: {:8.7f}".format(self.best_mae))
         print()

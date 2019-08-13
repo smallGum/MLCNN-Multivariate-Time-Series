@@ -12,10 +12,10 @@ param_dict = dict(
     train_share = [(0.6, 0.2)],
     input_T = [24 * 7],
     n_CNN = [5],
-    kernel_size = [5],
-    hidCNN = [5, 10, 25, 50, 100],
-    hidRNN = [10, 25, 50, 100, 200],
-    dropout = [0.2],
+    kernel_size = [3,5],
+    hidCNN = [5, 10, 50],
+    hidRNN = [10, 50, 100, 200],
+    dropout = [0.3,0.5],
     highway_window = [8],
     clip = [10.],
     epochs = [100],
@@ -40,12 +40,8 @@ if __name__ == '__main__':
                              collaborate_span=cur_args.collaborate_span, collaborate_stride=cur_args.collaborate_stride,
                              cuda=cur_args.cuda, normalize_pattern=cur_args.normalize)
         runner = ModelRunner(cur_args, data_gen, None)
-        for _ in range(10):
-            runner.model = MLCNN(cur_args, data_gen)
-            runner.run()
-            del runner.model
-            gc.collect()
-            runner.model = None
+        runner.model = MLCNN(cur_args, data_gen)
+        runner.run()
         runner.getMetrics()
         del runner
         gc.collect()
