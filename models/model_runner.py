@@ -231,6 +231,8 @@ class ModelRunner():
             pass
 
         self.train_losses.append(tmp_losses)
+        # In our experimental settings, we aim to compare the best performance of all models.
+        # Therefore, we average the best valid and test result for model comparison.
         final_best_mse = (best_valid_mse + best_test_mse) / 2.0
         final_best_rse = (best_valid_rse + best_test_rse) / 2.0
         final_best_mae = (best_valid_mae + best_test_mae) / 2.0
