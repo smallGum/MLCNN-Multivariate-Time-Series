@@ -4,6 +4,14 @@ We implement the Multi-Level Construal Neural Network (MLCNN) model to perform m
 
 ### Usage
 
+Please install [Git Large File Storage](https://git-lfs.github.com/) first and then use 
+
+```shell
+git lfs clone https://github.com/smallGum/MLCNN-Multivariate-Time-Series.git
+```
+
+to download all the datasets and codes.
+
 You can find the dataset in the `data/` folder.
 
 Examples with parameter grid search to run different datasets are in `runTraffic.py`, `runEnergy.py` and `runNASDAQ.py`.
