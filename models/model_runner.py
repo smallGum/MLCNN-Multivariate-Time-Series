@@ -231,8 +231,12 @@ class ModelRunner():
             pass
 
         self.train_losses.append(tmp_losses)
-        # In our experiment, the validation set actually serves as part of the test set.
-        # Therefore, we average the best valid and test result for model comparison.
+        # In our experiment, we first use the validation set to select hyper-parameters from the whole hyper-parameter set. 
+        # We filtered out hyper-parameters that had poor performance 
+        # but remained several groups of hyper-parameters that obtained similar good predictive results.
+        # After determining the remaining groups of hyper-parameters, 
+        # the validation set becomes another test set for testing the best performance of different hyper-parameters.
+        # Therefore, we average the best valid and test result here to get final best result.
         final_best_mse = (best_valid_mse + best_test_mse) / 2.0
         final_best_rse = (best_valid_rse + best_test_rse) / 2.0
         final_best_mae = (best_valid_mae + best_test_mae) / 2.0
