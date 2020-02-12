@@ -1,6 +1,6 @@
 # MLCNN for Multivariate Time Series Forecasting
 
-We implement the Multi-Level Construal Neural Network (MLCNN) model to perform multivariate time series forecasting.
+This repository provides the code for the paper [Towards Better Forecasting by Fusing Near and Distant Future Visions](https://arxiv.org/abs/1912.05122), accepted by AAAI 2020.
 
 ### Usage
 
