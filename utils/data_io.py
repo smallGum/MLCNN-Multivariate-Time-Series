@@ -132,8 +132,8 @@ class DataGenerator():
                 X[i, :, :] = torch.from_numpy(self.X[start:end, :])
                 Y[i, :] = torch.from_numpy(self.X[idx_set[i], :])
         elif self.mode == "continuous":
-            X = torch.zeros((idx_num, self.input_T, self.column_num))
-            Y = torch.zeros((idx_num, self.collaborate_span * 2 + 1, self.column_num))
+            X = torch.zeros((idx_num - self.collaborate_span * self.collaborate_stride, self.input_T, self.column_num))
+            Y = torch.zeros((idx_num - self.collaborate_span * self.collaborate_stride, self.collaborate_span * 2 + 1, self.column_num))
             for i in range(idx_num - self.collaborate_span * self.collaborate_stride):
                 X_end = idx_set[i] - self.output_T + 1
                 X_start = X_end - self.input_T
