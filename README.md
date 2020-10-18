@@ -4,15 +4,7 @@ This repository provides the code for the paper [Towards Better Forecasting by F
 
 ### Usage
 
-Please install [Git Large File Storage](https://git-lfs.github.com/) first and then use 
-
-```shell
-git lfs clone https://github.com/smallGum/MLCNN-Multivariate-Time-Series.git
-```
-
-to download all the datasets and codes.
-
-You can find the dataset in the `data/` folder.
+You can find the `Energy` and `NASDAQ` dataset in the `data/` folder. As For `Traffic` dataset, you can find it in [LSTNet data repository](https://github.com/laiguokun/multivariate-time-series-data/tree/master/traffic).
 
 Examples with parameter grid search to run different datasets are in `runTraffic.py`, `runEnergy.py` and `runNASDAQ.py`.
 
